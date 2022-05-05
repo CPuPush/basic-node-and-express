@@ -2,8 +2,10 @@ let express = require('express');
 let app = express();
 
 console.log("Hello World");
-
-
+//app.method('PATH', handler);
+app.get('/',(req, res)=>{
+    res.send('Hello Express')
+});
 
 
 
