@@ -8,7 +8,7 @@ let app = express();
 // });
 
 //load public css
-app.use(express.static(__dirname + '/public'));
+app.use('public', express.static(__dirname + '/public'));
 
 //serve an HTML file
 app.get('/', (req, res)=>{
