@@ -15,15 +15,16 @@ app.use((req, res, next)=>{
     next();
 });
 //middleware
-app.use((req, res, next)=>{
-    req.time = new Date().toString();
+app.get('/now',
+    (req, res, next)=>{
+    req.time = new Date().toString()
     next();
-});
-app.get('/now', (req, res)=>{
-    res.json({
-        time : req.time
-    });
-});
+    },(req, res)=>{
+        res.json({
+            time: req.time
+        })
+    }
+)
 
 //load public css
 app.use('/public', express.static(__dirname + '/public'));
