@@ -9,6 +9,14 @@ require('dotenv').config();
 //     res.send('Hello Express');
 // });
 
+//Middleware simple log
+app.use((req, res, next)=>{ 
+    console.log(req.method + " "+ req.path +" - "+req.ip);
+    next();
+});
+//GET /json - ::ffff:127.0.0.1
+// req.method, req.path and req.ip
+
 //load public css
 app.use('/public', express.static(__dirname + '/public'));
 
