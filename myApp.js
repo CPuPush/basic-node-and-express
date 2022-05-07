@@ -14,8 +14,16 @@ app.use((req, res, next)=>{
     console.log(req.method + " "+ req.path +" - "+req.ip);
     next();
 });
-//GET /json - ::ffff:127.0.0.1
-// req.method, req.path and req.ip
+//middleware
+app.use((req, res, next)=>{
+    req.time = new Date().toString();
+    next();
+});
+app.get('/now', (req, res)=>{
+    res.json({
+        time : req.time
+    });
+});
 
 //load public css
 app.use('/public', express.static(__dirname + '/public'));
