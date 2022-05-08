@@ -43,7 +43,13 @@ app.get('/json', (req, res)=>{
     }
     res.json(response)
 });
-
+//get route params from the client
+app.get("/:word/echo", (req, res)=>{
+    // console.log(req.params);
+    res.json({
+        echo: req.params.word
+    });
+});
 
 
 
