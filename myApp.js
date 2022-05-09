@@ -55,7 +55,10 @@ app.get("/:word/echo", (req, res)=>{
         echo: req.params.word
     });
 });
+
+
 //get query parameter input from the client
+//example url http://localhost:3000/name?first=firstname&last=lastname
 app.get("/name", (req, res)=>{
     let firstname = req.query.first;
     let lastname = req.query.last;
@@ -64,7 +67,15 @@ app.get("/name", (req, res)=>{
     })
     console.log(req.query);
 });
-
+//get data from HTML form
+app.post("/name", (req, res)=>{
+    let firstname = req.body.first;
+    let lastname = req.body.last;
+    // console.log(firstname, lastname);
+    res.json({
+        name : `${firstname} ${lastname}`
+    })
+}); 
 
 
 
