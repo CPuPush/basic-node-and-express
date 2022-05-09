@@ -1,5 +1,6 @@
 const { JSONCookie } = require('cookie-parser');
 let express = require('express');
+const { get } = require('express/lib/response');
 let app = express();
 require('dotenv').config();
 
@@ -50,16 +51,16 @@ app.get("/:word/echo", (req, res)=>{
         echo: req.params.word
     });
 });
-app.route("/name").get((req, res)=>{
-    req.query = req.query
+//get query parameter input from the client
+app.get("/name", (req, res)=>{
+    let firstname = req.query.first;
+    let lastname = req.query.last;
     res.json({
-        name : req.query
+        name: `${firstname} ${lastname}`
     })
-}).post((req, res)=>{
-
-})
-
-
+    console.log(req.query);
+});
+//http://localhost:3000/name?first=firstname&last=lastname
 
 
 
