@@ -2,6 +2,7 @@ const { JSONCookie } = require('cookie-parser');
 let express = require('express');
 const { get } = require('express/lib/response');
 let app = express();
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 // console.log("Hello World");
@@ -26,6 +27,9 @@ app.get('/now',
         })
     }
 )
+//middleware bodyparser
+app.use(bodyParser.urlencoded({extended: false}))
+
 
 //load public css
 app.use('/public', express.static(__dirname + '/public'));
@@ -60,7 +64,7 @@ app.get("/name", (req, res)=>{
     })
     console.log(req.query);
 });
-//http://localhost:3000/name?first=firstname&last=lastname
+
 
 
 
