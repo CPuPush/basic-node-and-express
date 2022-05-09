@@ -50,7 +50,14 @@ app.get("/:word/echo", (req, res)=>{
         echo: req.params.word
     });
 });
+app.route("/name").get((req, res)=>{
+    req.query = req.query
+    res.json({
+        name : req.query
+    })
+}).post((req, res)=>{
 
+})
 
 
 
